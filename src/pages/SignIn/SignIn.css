@@ -16,20 +16,12 @@
   width: 90%;
   /* border: 2px solid red; */
 }
-.form-container p {
-  color: white;
-  margin-top: 50px;
-  font-size: 1.1rem;
-  /* border: 2px solid red; */
-}
 .eye {
   width: 30px;
-  height: 20px;
+  height: 18px;
   position: absolute;
-  top: 11.5rem;
+  top: 11.6rem;
   right: 7%;
- 
-
 }
 .input {
   height: 60px;
@@ -45,8 +37,7 @@
   font-weight: 500;
 }
 .input:focus {
-    outline: none;
-  
+  outline: none;
 }
 .submit-btn {
   height: 50px;
@@ -56,8 +47,37 @@
   border: none;
   color: #0e85ff;
   font-size: 1.3rem;
-  margin-top: 40px;
+  margin-top: 50px;
 
   font-weight: 600;
   letter-spacing: 1px;
+}
+.forget-text {
+  color: white;
+  margin-top: 50px;
+  font-size: 1.1rem;
+}
+.form-error1 {
+  color: rgb(255, 0, 0);
+  font-size: 1.1rem;
+  position: absolute;
+  top: 100px;
+  left: 45%;
+  /* right: 10%; */
+}
+.form-error2 {
+  color: rgb(255, 0, 0);
+  font-size: 1.1rem;
+  top: 210px;
+  left: 45%;
+  /* right: 50%; */
+  position: absolute;
+}
+.form-error3 {
+  color: rgb(255, 0, 0);
+  font-size: 1.1rem;
+  top: 320px;
+  left: 45%;
+  /* right: 50%; */
+  position: absolute;
 }
