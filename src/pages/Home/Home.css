@@ -1,3 +1,9 @@
+.main {
+  min-height: 100vh;
+  width: 100vw;
+  /* border: 3px solid red; */
+}
+
 .home-container {
   background: linear-gradient(#00b4ff, #0e85ff);
   min-height: 100vh;
@@ -5,7 +11,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 .logo {
   height: 80px;
@@ -13,15 +19,61 @@
   /* border: 1px solid; */
   margin: 50px 0px;
 }
+.logo-web {
+  display: none;
+}
 .nav-bar {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2) ;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
   height: 50px;
-  /* outline: black; */
-  /* outline-offset: 0px 0px; */
-  /* outline-style: solid; */
-  
+}
+.business-text {
+  display: none;
+}
+@media screen and (min-width: 1000px) {
+  .main {
+    /* border: 3px solid red; */
+    justify-content: center;
+    display: flex;
+    align-items: center;
+  }
+  .home-container {
+    min-height: 0vh;
+    height: 600px;
+    width: 999px;
+    /* border: 1px solid rgb(50, 37, 199); */
+    border-radius: 8px;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .logo {
+    display: none;
+  }
+  .nav-bar {
+    display: none;
+  }
+  .logo-web {
+    display: block;
+  }
+  .business-text {
+    display: block;
+    color: white;
+    margin-top: 60px;
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  .web-div {
+    border: 1px solid rgb(255, 255, 255,0.3);
+    height: 100%;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
 }

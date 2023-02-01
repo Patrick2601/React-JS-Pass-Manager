@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Formik, useFormik } from "formik";
 import eyeOn from "../../images/eye(1).png";
 import eyeoff from "../../images/eyeoff.png";
+import { NavLink, Route, Routes } from "react-router-dom";
+
 import "./SignIn.css";
 import * as Yup from "yup";
 
@@ -30,8 +32,9 @@ function SignIn() {
   return (
     <div className="signin-container">
       <form onSubmit={formik.handleSubmit} className="form-container">
+        <p className="business-text">SIGN IN TO YOUR ACCOUNT</p>
         <input
-         autoComplete="off"
+          autoComplete="off"
           maxLength={10}
           className="input"
           placeholder="Mobile Number"
@@ -54,7 +57,7 @@ function SignIn() {
           className="eye"
         />
         <input
-         autoComplete="off"
+          autoComplete="off"
           maxLength={4}
           className="input"
           placeholder="MPin"
@@ -73,6 +76,22 @@ function SignIn() {
         <button type="submit" className="submit-btn">
           SIGN IN
         </button>
+
+        <p className="Account-text">
+          Don't have a Account?{" "}
+          <NavLink
+            to="/signup"
+            className="tablink"
+            style={({ isActive }) => {
+              return {
+                color: isActive ? "white" : "white",  
+                textDecoration: "none",
+              };
+            }}
+          >
+            SIGN UP
+          </NavLink>
+        </p>
       </form>
     </div>
   );

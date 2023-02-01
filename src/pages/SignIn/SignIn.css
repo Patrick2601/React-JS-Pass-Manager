@@ -48,11 +48,16 @@
   color: #0e85ff;
   font-size: 1.3rem;
   margin-top: 50px;
-
   font-weight: 600;
   letter-spacing: 1px;
 }
 .forget-text {
+  color: white;
+  margin-top: 50px;
+  font-size: 1.1rem;
+}
+.Account-text {
+  display: none;
   color: white;
   margin-top: 50px;
   font-size: 1.1rem;
@@ -80,4 +85,28 @@
   left: 45%;
   /* right: 50%; */
   position: absolute;
+}
+
+@media screen and (min-width: 1000px) {
+  .input {
+    height: 60px;
+    width: 500px;
+    margin-top: 40px;
+  }
+  .forget-text {
+    font-size: 1.1rem;
+    text-align: right;
+  }
+  .eye {
+    top: 17.5rem;
+  }
+  .submit-btn {
+    margin-top: 20px;
+  }
+  .Account-text {
+    display: block;
+    color: white;
+    margin-top: 60px;
+    font-size: 1.1rem;
+  }
 }
