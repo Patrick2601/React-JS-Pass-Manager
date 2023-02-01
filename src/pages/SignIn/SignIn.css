@@ -83,7 +83,6 @@
   font-size: 1.1rem;
   top: 320px;
   left: 45%;
-  /* right: 50%; */
   position: absolute;
 }
 
@@ -108,5 +107,20 @@
     color: white;
     margin-top: 60px;
     font-size: 1.1rem;
+  }
+  .form-error1 {
+
+    top: 205px;
+  
+  }
+  .form-error2 {
+
+    top: 310px;
+  
+  }
+  .form-error3 {
+
+    top: 410px;
+  
   }
 }

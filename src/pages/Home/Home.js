@@ -29,7 +29,7 @@ function Home() {
                 fontWeight: isActive ? "800" : "500",
                 textDecoration: "none",
                 borderRadius: "2px",
-                padding: "10px 0px",
+                padding: "8px 0px",
               };
             }}
           >
@@ -43,7 +43,7 @@ function Home() {
                 borderBottom: isActive ? "4px solid #FFA222" : "none",
                 color: isActive ? "white" : "white",
                 fontSize: "1.5rem",
-                padding: "10px 0px",
+                padding: "8px 0px",
                 transition: isActive ? "all 0.1s ease" : null,
                 fontWeight: isActive ? "800" : "500",
                 textDecoration: "none",

@@ -34,6 +34,7 @@ function SignUp() {
   return (
     <div className="signin-container">
       <form onSubmit={formik.handleSubmit} className="form-container">
+        <p className="business-text">SIGN UP</p>
         <input
           autoComplete="off"
           maxLength={10}
@@ -84,7 +85,7 @@ function SignUp() {
           <p className="form-error3"> {formik.errors.mpinconfirm}</p>
         ) : null}
 
-        <button type="submit" className="submit-btn">
+        <button type="submit" className="submit-btn1">
           SIGN IN
         </button>
       </form>

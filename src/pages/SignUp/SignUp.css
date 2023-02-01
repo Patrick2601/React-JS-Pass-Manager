@@ -5,3 +5,20 @@
   top: 18.5rem;
   right: 7%;
 }
+.submit-btn1 {
+  height: 50px;
+  width: 150px;
+  background-color: white;
+  border-radius: 5px;
+  border: none;
+  color: #0e85ff;
+  font-size: 1.3rem;
+  margin-top: 50px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+@media screen and (min-width: 1000px) {
+  .eye-1 {
+    top: 24rem;
+  }
+}
