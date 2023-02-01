@@ -13,7 +13,9 @@ const SignUpSchema = Yup.object().shape({
     .min(4, "Too Short!")
     .max(4, "Too Long!")
     .required("Required"),
-  mpinconfirm: Yup.string().oneOf([Yup.ref("mpin"), null], "MPin must match"),
+  mpinconfirm: Yup.string()
+    .required("Required")
+    .oneOf([Yup.ref("mpin"), null], "MPin must match"),
 });
 
 function SignUp() {
