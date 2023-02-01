@@ -1,8 +1,8 @@
+import "./SignUp.css";
 import React, { useState } from "react";
 import { useFormik } from "formik";
 import eyeOn from "../../images/eye(1).png";
 import eyeoff from "../../images/eyeoff.png";
-import "./SignUp.css";
 import * as Yup from "yup";
 const SignUpSchema = Yup.object().shape({
   mobile: Yup.string()

@@ -15,11 +15,13 @@ function Home() {
           // className="tablink"
           style={({ isActive }) => {
             return {
-              borderBottom: isActive ? "4px solid #FFA222" : "none",
+              borderBottom: isActive
+                ? "4px solid #FFA222"
+                : "none",
               color: isActive ? "white" : "white",
               fontSize: "1.5rem",
               transition: isActive ? "all 0.1s ease" : null,
-              fontWeight: 'bolder',
+              fontWeight: isActive ? "800" : "500",
               textDecoration: "none",
               borderRadius: "2px",
               padding: "10px 0px",
@@ -38,7 +40,7 @@ function Home() {
               fontSize: "1.5rem",
               padding: "10px 0px",
               transition: isActive ? "all 0.1s ease" : null,
-              fontWeight: 'bolder',
+              fontWeight: isActive ? "800" : "500",
               textDecoration: "none",
               borderRadius: "2px",
             };
