@@ -12,6 +12,9 @@ import home from "../../images2/02/Side_menu/home_icn.png";
 import webHeaderImg from "../../images2/02/Header/logo.png";
 import profileWeb from "../../images2/02/Header/profile.png";
 import syncWeb from "../../images2/02/Header/sync.png";
+import searchWebIcon from "../../images2/02/search_icn/search.png";
+import fb from "../../images2/02/01c/Bitmap.png";
+import copyIcon from "../../images2/02/01/Group 6/Bitmap.png";
 
 function PassManager() {
   return (
@@ -35,9 +38,111 @@ function PassManager() {
         <div className="sub-header-1">
           Social Media
           <div className="circle">07</div>
-          <img className="path-img" src={pathIcon}></img>
+          <img className="path-img" src={pathIcon} />
         </div>
       </div>
+      <div className="card-container">
+        <div className="card">
+          <div className="card-innerDiv1">
+            <img src={fb} />
+            <div>
+              <p>Facebook</p>
+              <img src={copyIcon} />
+              <span>Copy Password</span>
+            </div>
+          </div>
+          <p className="website-text">www.www.www</p>
+        </div>
+        <div className="card">
+          <div className="card-innerDiv1">
+            <img src={fb} />
+            <div>
+              <p>Facebook</p>
+              <img src={copyIcon} />
+              <span>Copy Password</span>
+            </div>
+          </div>
+          <p className="website-text">www.www.www</p>
+        </div>
+        <div className="card">
+          <div className="card-innerDiv1">
+            <img src={fb} />
+            <div>
+              <p>Facebook</p>
+              <img src={copyIcon} />
+              <span>Copy Password</span>
+            </div>
+          </div>
+          <p className="website-text">www.www.www</p>
+        </div>
+        <div className="card">
+          <div className="card-innerDiv1">
+            <img src={fb} />
+            <div>
+              <p>Facebook</p>
+              <img src={copyIcon} />
+              <span>Copy Password</span>
+            </div>
+          </div>
+          <p className="website-text">www.www.www</p>
+        </div>
+        <div className="card">
+          <div className="card-innerDiv1">
+            <img src={fb} />
+            <div>
+              <p>Facebook</p>
+              <img src={copyIcon} />
+              <span>Copy Password</span>
+            </div>
+          </div>
+          <p className="website-text">www.www.www</p>
+        </div>
+        <div className="card">
+          <div className="card-innerDiv1">
+            <img src={fb} />
+            <div>
+              <p>Facebook</p>
+              <img src={copyIcon} />
+              <span>Copy Password</span>
+            </div>
+          </div>
+          <p className="website-text">www.www.www</p>
+        </div>
+        <div className="card">
+          <div className="card-innerDiv1">
+            <img src={fb} />
+            <div>
+              <p>Facebook</p>
+              <img src={copyIcon} />
+              <span>Copy Password</span>
+            </div>
+          </div>
+          <p className="website-text">www.www.www</p>
+        </div>
+        <div className="card">
+          <div className="card-innerDiv1">
+            <img src={fb} />
+            <div>
+              <p>Facebook</p>
+              <img src={copyIcon} />
+              <span>Copy Password</span>
+            </div>
+          </div>
+          <p className="website-text">www.www.www</p>
+        </div>
+        <div className="card">
+          <div className="card-innerDiv1">
+            <img src={fb} />
+            <div>
+              <p>Facebook</p>
+              <img src={copyIcon} />
+              <span>Copy Password</span>
+            </div>
+          </div>
+          <p className="website-text">www.www.www</p>
+        </div>
+      </div>
+
       <img className="addSite-Btn" src={addbtn}></img>
       {/* ------------------------------------------MOBILE-VIEW------------------------------------------------ */}
       {/* ------------------------------------------WEB-VIEW------------------------------------------------ */}
@@ -54,6 +159,16 @@ function PassManager() {
         <div>
           <img src={syncWeb} />
           <img src={profileWeb} />
+        </div>
+
+        <div className="search-bar">
+          <input
+            autoComplete="off"
+            className="search-input"
+            type="text"
+            placeholder="Search"
+          />
+          <img src={searchWebIcon} />
         </div>
       </div>
       {/* ------------------------------------------WEB-VIEW------------------------------------------------ */}
