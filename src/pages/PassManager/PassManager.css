@@ -1,7 +1,9 @@
 * {
   font-family: "Open Sans", sans-serif;
 }
-
+/* .passManager-main{
+  background-color: #3c4857;
+} */
 .header {
   background-color: #0081ff;
   height: 80px;
@@ -126,6 +128,7 @@
   align-items: center;
   padding: 0px 30px;
   box-sizing: border-box;
+  margin-bottom: 50px;
 }
 .card-innerDiv1 p {
   font-size: 1.2rem;
@@ -154,11 +157,82 @@
   position: absolute;
   bottom: -18px;
 }
-
+.addSite-modal {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 100vw;
+  height: 100vh;
+  right: 0px;
+  bottom: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-container {
+  background-color: white;
+  width: 90%;
+  height: 85%;
+  border-radius: 10px;
+  padding: 0px 30px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.addSite-text {
+  color: #3c4857;
+  font-weight: 600;
+  font-size: 1.8rem;
+  /* border: 1px solid; */
+}
+.label {
+  color: #949ca5;
+  font-size: 1.3rem;
+  margin: 20px 0px;
+}
+.addsite-input {
+  border: 0px;
+  background: #fafafa;
+  height: 45px;
+  border-radius: 6px;
+  /* margin-top: 10px; */
+}
+.addsite-input:focus {
+  outline: none;
+}
+.btns-div {
+  /* border: 1px solid; */
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+.btn {
+  width: 180px;
+  height: 60px;
+  border-radius: 6px;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.reset-btn {
+  background-color: white;
+  color: #0081ff;
+  border: 3px solid #0081ff;
+}
+.save-btn {
+  background-color: #0081ff;
+  color: white;
+  border: 3px solid #0081ff;
+}
+.cancel-Btn {
+  position: absolute;
+  right: -20px;
+  top: -20px;
+  transform: rotate(45deg);
+}
 /* =============================================================== */
 /* =============================================================== */
 /* =============================================================== */
-@media screen and (min-width: 1043px) {
+@media screen and (min-width: 900px) {
   .header {
     display: none;
   }
@@ -280,10 +354,10 @@
     position: absolute;
     /* z-index: 1; */
     top: 350px;
-    left: 300px;
+    left: 200px;
     overflow: scroll;
     /* min-width: 100vw; */
-    /* height: 690px; */
+    height: 64vh;
   }
   .card {
     place-items: center;
@@ -292,13 +366,19 @@
     width: 400px;
     height: 10rem;
   }
+  .btns-div {
+ 
+    justify-content: flex-end;
+    gap: 20px;
+  
+  }
 }
-@media screen and (min-width: 1043px) {
+@media screen and (min-width: 1050px) {
   .card-container {
     grid-template-columns: repeat(2, 1fr);
     left: 200px;
     overflow: scroll;
-    height: 63vh;
+    height: 60vh;
   }
 }
 @media screen and (min-width: 1500px) {

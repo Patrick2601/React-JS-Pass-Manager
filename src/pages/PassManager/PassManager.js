@@ -86,61 +86,6 @@ function PassManager() {
           </div>
           <p className="website-text">www.www.www</p>
         </div>
-        <div className="card">
-          <div className="card-innerDiv1">
-            <img src={fb} />
-            <div>
-              <p>Facebook</p>
-              <img src={copyIcon} />
-              <span>Copy Password</span>
-            </div>
-          </div>
-          <p className="website-text">www.www.www</p>
-        </div>
-        <div className="card">
-          <div className="card-innerDiv1">
-            <img src={fb} />
-            <div>
-              <p>Facebook</p>
-              <img src={copyIcon} />
-              <span>Copy Password</span>
-            </div>
-          </div>
-          <p className="website-text">www.www.www</p>
-        </div>
-        <div className="card">
-          <div className="card-innerDiv1">
-            <img src={fb} />
-            <div>
-              <p>Facebook</p>
-              <img src={copyIcon} />
-              <span>Copy Password</span>
-            </div>
-          </div>
-          <p className="website-text">www.www.www</p>
-        </div>
-        <div className="card">
-          <div className="card-innerDiv1">
-            <img src={fb} />
-            <div>
-              <p>Facebook</p>
-              <img src={copyIcon} />
-              <span>Copy Password</span>
-            </div>
-          </div>
-          <p className="website-text">www.www.www</p>
-        </div>
-        <div className="card">
-          <div className="card-innerDiv1">
-            <img src={fb} />
-            <div>
-              <p>Facebook</p>
-              <img src={copyIcon} />
-              <span>Copy Password</span>
-            </div>
-          </div>
-          <p className="website-text">www.www.www</p>
-        </div>
       </div>
 
       <img className="addSite-Btn" src={addbtn}></img>
@@ -172,6 +117,34 @@ function PassManager() {
         </div>
       </div>
       {/* ------------------------------------------WEB-VIEW------------------------------------------------ */}
+      {/* ------------------------------------------MODAL-VIEW------------------------------------------------ */}
+      <modal className="addSite-modal">
+        <div className="modal-container">
+          <img className="cancel-Btn" src={addbtn}></img>
+          <p className="addSite-text">Add Site</p>
+          <label className="label">URL</label>
+          <input className="addsite-input" />
+       
+            <label className="label">Site Name</label>
+            <input className="addsite-input" />
+            <label className="label">Sector/Folder</label>
+            <input className="addsite-input" />
+    
+
+          <label className="label">User Name</label>
+          <input className="addsite-input" />
+          <label className="label">Site Password</label>
+          <input className="addsite-input" />
+          <label className="label">Notes</label>
+          <textarea className="addsite-input" />
+          <div className="btns-div">
+            <button className="reset-btn btn">Reset</button>
+            <button className="save-btn btn">Save</button>
+          </div>
+        </div>
+      </modal>
+
+      {/* ------------------------------------------MODAL-VIEW------------------------------------------------ */}
     </div>
   );
 }
