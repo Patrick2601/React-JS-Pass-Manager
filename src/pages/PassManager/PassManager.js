@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import "./PassManager.css";
 import barIcon from "../../images/06/appbar/burger_menu.png";
 import passManager from "../../images/06/Group/passmanager.png";
@@ -15,8 +15,35 @@ import syncWeb from "../../images2/02/Header/sync.png";
 import searchWebIcon from "../../images2/02/search_icn/search.png";
 import fb from "../../images2/02/01c/Bitmap.png";
 import copyIcon from "../../images2/02/01/Group 6/Bitmap.png";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
+const AddSiteSchema = Yup.object().shape({
+  mobile: Yup.string()
+    .min(10, "Too Short!")
+    .max(10, "Too Long!")
+    .required("Required"),
+  mpin: Yup.string()
+    .min(4, "Too Short!")
+    .max(4, "Too Long!")
+    .required("Required"),
+});
 function PassManager() {
+  const [modal, setModal] = useState(false);
+  const formik = useFormik({
+    initialValues: {
+      url: "",
+      sitename: "",
+      sector: "",
+      username: "",
+      sitename: "",
+      notes: "",
+    },
+    validationSchema: AddSiteSchema,
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
   return (
     <div className="passManager-main">
       {/* ------------------------------------------MOBILE-VIEW------------------------------------------------ */}
@@ -88,7 +115,13 @@ function PassManager() {
         </div>
       </div>
 
-      <img className="addSite-Btn" src={addbtn}></img>
+      <img
+        onClick={() => {
+          setModal(!modal);
+        }}
+        className="addSite-Btn"
+        src={addbtn}
+      ></img>
       {/* ------------------------------------------MOBILE-VIEW------------------------------------------------ */}
       {/* ------------------------------------------WEB-VIEW------------------------------------------------ */}
 
@@ -118,31 +151,74 @@ function PassManager() {
       </div>
       {/* ------------------------------------------WEB-VIEW------------------------------------------------ */}
       {/* ------------------------------------------MODAL-VIEW------------------------------------------------ */}
-      <modal className="addSite-modal">
-        <div className="modal-container">
-          <img className="cancel-Btn" src={addbtn}></img>
-          <p className="addSite-text">Add Site</p>
-          <label className="label">URL</label>
-          <input className="addsite-input" />
-       
-            <label className="label">Site Name</label>
-            <input className="addsite-input" />
-            <label className="label">Sector/Folder</label>
-            <input className="addsite-input" />
-    
-
-          <label className="label">User Name</label>
-          <input className="addsite-input" />
-          <label className="label">Site Password</label>
-          <input className="addsite-input" />
-          <label className="label">Notes</label>
-          <textarea className="addsite-input" />
-          <div className="btns-div">
-            <button className="reset-btn btn">Reset</button>
-            <button className="save-btn btn">Save</button>
-          </div>
-        </div>
-      </modal>
+      {modal ? (
+        <modal className="addSite-modal">
+          <form onSubmit={formik.handleSubmit}>
+            <div className="modal-container">
+              <img
+                onClick={() => {
+                  setModal(!modal);
+                }}
+                className="cancel-Btn"
+                src={addbtn}
+              ></img>
+              <p className="addSite-text">Add Site</p>
+              <label className="label">URL</label>
+              <input
+                onChange={formik.handleChange}
+                value={formik.values.url}
+                className="addsite-input"
+              />
+              {/* <div className="wrap-div"> */}
+              <label className="label">Site Name</label>
+              <input
+                onChange={formik.handleChange}
+                value={formik.values.sitename}
+                className="addsite-input"
+              />
+              <label className="label">Sector/Folder</label>
+              {/* <input className="addsite-input" /> */}
+              <select
+                onChange={formik.handleChange}
+                value={formik.values.sector}
+                className="addsite-input"
+                name="cars"
+                id="cars"
+              >
+                <option value="volvo" selected>
+                  Social Media
+                </option>
+                <option value="saab">Websites</option>
+              </select>
+              {/* </div> */}
+              <label className="label">User Name</label>
+              <input
+                onChange={formik.handleChange}
+                value={formik.values.username}
+                className="addsite-input"
+              />
+              <label className="label">Site Password</label>
+              <input
+                onChange={formik.handleChange}
+                value={formik.values.password}
+                className="addsite-input"
+              />
+              <label className="label">Notes</label>
+              <textarea
+                onChange={formik.handleChange}
+                value={formik.values.notes}
+                className="addsite-input"
+              />
+              <div className="btns-div">
+                <button className="reset-btn btn">Reset</button>
+                <button type="submit" className="save-btn btn">
+                  Save
+                </button>
+              </div>
+            </div>
+          </form>
+        </modal>
+      ) : null}
 
       {/* ------------------------------------------MODAL-VIEW------------------------------------------------ */}
     </div>
