@@ -68,7 +68,16 @@
   position: absolute;
   top: 100px;
   left: 45%;
+  z-index: 2;
   /* right: 10%; */
+}
+.addsiteForm-error {
+  color: rgb(255, 0, 0);
+  font-size: 1.1rem;
+  position: absolute;
+  top: 20px;
+  left: 45%;
+  z-index: 2;
 }
 .form-error2 {
   color: rgb(255, 0, 0);
@@ -109,18 +118,12 @@
     font-size: 1.1rem;
   }
   .form-error1 {
-
     top: 205px;
-  
   }
   .form-error2 {
-
     top: 310px;
-  
   }
   .form-error3 {
-
     top: 410px;
-  
   }
 }
