@@ -21,6 +21,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   addCurrentUser,
   addUsersData,
+  filterOnSearch,
   filterUsersData,
 } from "../../redux/Slice";
 
@@ -35,7 +36,6 @@ const addSiteSchema = Yup.object().shape({
 function PassManager() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.passmanager);
-
   const [modal, setModal] = useState(false);
   const ref = useRef();
   const formik = useFormik({
@@ -84,7 +84,20 @@ function PassManager() {
         <div className="sub-header-1">
           Social Media
           <div className="circle">{user.allUsersDataCopy.length}</div>
-          <img className="path-img" src={pathIcon} />
+          {/* <img className="path-img" src={pathIcon} /> */}
+          <select
+            autoComplete="off"
+            name="sector"
+            onChange={formik.handleChange}
+            value={formik.values.sector}
+            className="addsite-input"
+          >
+            <option value="Select" selected>All</option>
+            <option value="Social Media" selected>
+              Social Media
+            </option>
+            <option value="Websites">Websites</option>
+          </select>
         </div>
       </div>
       <div className="card-container">
@@ -146,7 +159,7 @@ function PassManager() {
             type="text"
             placeholder="Search"
             onChange={async (e) => {
-              dispatch(filterUsersData(e.target.value));
+              dispatch(filterOnSearch(e.target.value));
             }}
           />
           <img src={searchWebIcon} />

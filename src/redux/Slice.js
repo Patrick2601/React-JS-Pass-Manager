@@ -5,6 +5,7 @@ const weatherSlice = createSlice({
   initialState: {
     allUsersData: [],
     allUsersDataCopy: [],
+    userDataFilter: [],
     allUsers: [],
     currentUser: {},
   },
@@ -12,13 +13,19 @@ const weatherSlice = createSlice({
     addUsersData: (state, action) => {
       state.allUsersData.push(action.payload);
       state.allUsersDataCopy.push(action.payload);
+      state.userDataFilter.push(action.payload);
+      // console.log('dadac',state.allUsersData);
     },
     filterUsersData: (state, action) => {
       state.allUsersDataCopy = state.allUsersData.filter(
         (e) => state.currentUser.mobile === e.mobile
       );
-      state.allUsersDataCopy = state.allUsersDataCopy.filter((e) =>
-        e.sitename.includes(action.payload)
+      state.userDataFilter = state.allUsersDataCopy;
+      console.log("iioi", state.userDataFilter);
+    },
+    filterOnSearch: (state, action) => {
+      state.allUsersDataCopy = state.userDataFilter.filter((e) =>
+        e.sitename.toLowerCase().includes(action.payload.toLowerCase())
       );
     },
     addUsers: (state, action) => {
@@ -30,6 +37,11 @@ const weatherSlice = createSlice({
   },
 });
 
-export const { addUsersData, addUsers, addCurrentUser, filterUsersData } =
-  weatherSlice.actions;
+export const {
+  addUsersData,
+  addUsers,
+  addCurrentUser,
+  filterUsersData,
+  filterOnSearch,
+} = weatherSlice.actions;
 export default weatherSlice.reducer;
