@@ -5,6 +5,9 @@ import eyeoff from "../../images/eyeoff.png";
 import { NavLink, Route, Routes } from "react-router-dom";
 import "./SignIn.css";
 import * as Yup from "yup";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { addCurrentUser, filterUsersData } from "../../redux/Slice";
 
 const SignInSchema = Yup.object().shape({
   mobile: Yup.string()
@@ -17,6 +20,9 @@ const SignInSchema = Yup.object().shape({
     .required("Required"),
 });
 function SignIn() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const users = useSelector((state) => state.passmanager);
   const [textSecure, setTextSecure] = useState(true);
   const formik = useFormik({
     initialValues: {
@@ -25,9 +31,19 @@ function SignIn() {
     },
     validationSchema: SignInSchema,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      const userMobile = users.allUsers.filter(
+        (e) => e.mobile === values.mobile
+      ).length;
+      console.log(userMobile);
+      if (userMobile == 0) {
+        alert("User Not Registered");
+      } else {
+        dispatch(addCurrentUser({ mobile: values.mobile, mpin: values.mpin }));
+        dispatch(filterUsersData());
+      }
     },
   });
+  // console.log("KK", users.allUsers);
   return (
     <div className="signin-container">
       <form onSubmit={formik.handleSubmit} className="form-container">
@@ -83,7 +99,7 @@ function SignIn() {
             className="tablink"
             style={({ isActive }) => {
               return {
-                color: isActive ? "white" : "white",  
+                color: isActive ? "white" : "white",
                 textDecoration: "none",
               };
             }}

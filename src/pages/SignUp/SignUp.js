@@ -4,6 +4,9 @@ import { useFormik } from "formik";
 import eyeOn from "../../images/eye(1).png";
 import eyeoff from "../../images/eyeoff.png";
 import * as Yup from "yup";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { addUsers } from "../../redux/Slice";
 const SignUpSchema = Yup.object().shape({
   mobile: Yup.string()
     .min(10, "Too Short!")
@@ -19,6 +22,9 @@ const SignUpSchema = Yup.object().shape({
 });
 
 function SignUp() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const users = useSelector((state) => state.passmanager);
   const [textSecure, setTextSecure] = useState(true);
   const formik = useFormik({
     initialValues: {
@@ -28,9 +34,20 @@ function SignUp() {
     },
     validationSchema: SignUpSchema,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      console.log(values);
+      const userMobile = users.allUsers.filter(
+        (e) => e.mobile === values.mobile
+      ).length;
+      if (userMobile > 0) {
+        alert("User Already Exist");
+      } else {
+        dispatch(addUsers({ mobile: values.mobile, mpin: values.mpin }));
+        navigate("/");
+      }
     },
   });
+
+ 
   return (
     <div className="signin-container">
       <form onSubmit={formik.handleSubmit} className="form-container">

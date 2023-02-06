@@ -17,6 +17,12 @@ import fb from "../../images2/02/01c/Bitmap.png";
 import copyIcon from "../../images2/02/01/Group 6/Bitmap.png";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addCurrentUser,
+  addUsersData,
+  filterUsersData,
+} from "../../redux/Slice";
 
 const addSiteSchema = Yup.object().shape({
   url: Yup.string().required("Required"),
@@ -27,6 +33,9 @@ const addSiteSchema = Yup.object().shape({
   notes: Yup.string().required("Required"),
 });
 function PassManager() {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.passmanager);
+
   const [modal, setModal] = useState(false);
   const ref = useRef();
   const formik = useFormik({
@@ -41,10 +50,12 @@ function PassManager() {
     validationSchema: addSiteSchema,
     onSubmit: (values) => {
       console.log(values);
+      values.mobile = user.currentUser.mobile;
+      dispatch(addUsersData(values));
       formik.resetForm();
-      alert(JSON.stringify(values, null, 2));
     },
   });
+  // console.log("KK", user.currentUser);
   return (
     <div className="passManager-main">
       {/* ------------------------------------------MOBILE-VIEW------------------------------------------------ */}
@@ -57,7 +68,14 @@ function PassManager() {
         <div className="header-2">
           <img className="header-img3" src={searchImg}></img>
           <img className="header-img3" src={syncImg}></img>
-          <img className="header-img3" src={profileImg}></img>
+          <img
+            onClick={() => {
+              console.log("sfjsa");
+              dispatch(addCurrentUser({}));
+            }}
+            className="header-img3"
+            src={profileImg}
+          />
         </div>
       </div>
       <div className="sub-header">
@@ -65,55 +83,30 @@ function PassManager() {
         <div className="sites-border"></div>
         <div className="sub-header-1">
           Social Media
-          <div className="circle">07</div>
+          <div className="circle">{user.allUsersDataCopy.length}</div>
           <img className="path-img" src={pathIcon} />
         </div>
       </div>
       <div className="card-container">
-        <div className="card">
-          <div className="card-innerDiv1">
-            <img src={fb} />
-            <div>
-              <p>Facebook</p>
-              <img src={copyIcon} />
-              <span>Copy Password</span>
-            </div>
-          </div>
-          <p className="website-text">www.www.www</p>
-        </div>
-        <div className="card">
-          <div className="card-innerDiv1">
-            <img src={fb} />
-            <div>
-              <p>Facebook</p>
-              <img src={copyIcon} />
-              <span>Copy Password</span>
-            </div>
-          </div>
-          <p className="website-text">www.www.www</p>
-        </div>
-        <div className="card">
-          <div className="card-innerDiv1">
-            <img src={fb} />
-            <div>
-              <p>Facebook</p>
-              <img src={copyIcon} />
-              <span>Copy Password</span>
-            </div>
-          </div>
-          <p className="website-text">www.www.www</p>
-        </div>
-        <div className="card">
-          <div className="card-innerDiv1">
-            <img src={fb} />
-            <div>
-              <p>Facebook</p>
-              <img src={copyIcon} />
-              <span>Copy Password</span>
-            </div>
-          </div>
-          <p className="website-text">www.www.www</p>
-        </div>
+        {user.allUsersDataCopy.length > 0 ? (
+          user.allUsersDataCopy.map((e) => {
+            return (
+              <div className="card">
+                <div className="card-innerDiv1">
+                  <img src={fb} />
+                  <div>
+                    <p>{e.sitename}</p>
+                    <img src={copyIcon} />
+                    <span>Copy Password</span>
+                  </div>
+                </div>
+                <p className="website-text">{e.url}</p>
+              </div>
+            );
+          })
+        ) : (
+          <h1>Please Click on the "+" symbol to add sites</h1>
+        )}
       </div>
 
       <img
@@ -137,7 +130,13 @@ function PassManager() {
         <img src={webHeaderImg} />
         <div>
           <img src={syncWeb} />
-          <img src={profileWeb} />
+          <img
+            onClick={() => {
+              console.log("sfjsa");
+              dispatch(addCurrentUser({}));
+            }}
+            src={profileWeb}
+          />
         </div>
 
         <div className="search-bar">
@@ -146,6 +145,9 @@ function PassManager() {
             className="search-input"
             type="text"
             placeholder="Search"
+            onChange={async (e) => {
+              dispatch(filterUsersData(e.target.value));
+            }}
           />
           <img src={searchWebIcon} />
         </div>

@@ -109,6 +109,10 @@
   gap: 15px;
   background-color: #fafafa;
 }
+.card-container h1 {
+  /* border: 1px solid; */
+  display: none;
+}
 .card {
   /* place-items: center; */
   /* display: grid; */
@@ -238,6 +242,16 @@
 @media screen and (min-width: 900px) {
   .header {
     display: none;
+  }
+  .card-container h1 {
+    /* border: 1px solid; */
+    display: block;
+    width: 40rem;
+    height: 10%;
+    background-color: #f5f7fb;
+    text-align: center;
+    padding: 30px 10px;
+    border-radius: 20px;
   }
   .sub-header {
     position: absolute;
