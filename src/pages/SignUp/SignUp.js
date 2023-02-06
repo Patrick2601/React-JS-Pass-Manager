@@ -7,6 +7,8 @@ import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addUsers } from "../../redux/Slice";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const SignUpSchema = Yup.object().shape({
   mobile: Yup.string()
     .min(10, "Too Short!")
@@ -39,17 +41,40 @@ function SignUp() {
         (e) => e.mobile === values.mobile
       ).length;
       if (userMobile > 0) {
-        alert("User Already Exist");
+        // alert("User Already Exist");
+        toast.warn("User Already Exist", {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          progress: undefined,
+          theme: "light",
+        });
       } else {
         dispatch(addUsers({ mobile: values.mobile, mpin: values.mpin }));
-        navigate("/");
+
+        toast.success("Registration Successful", {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          progress: undefined,
+          theme: "light",
+        });
+        setTimeout(() => {
+          navigate("/");
+        }, 1500);
       }
     },
   });
 
- 
   return (
     <div className="signin-container">
+      <ToastContainer />
       <form onSubmit={formik.handleSubmit} className="form-container">
         <p className="business-text">SIGN UP</p>
         <input

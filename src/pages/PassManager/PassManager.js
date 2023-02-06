@@ -37,6 +37,8 @@ function PassManager() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.passmanager);
   const [modal, setModal] = useState(false);
+  const [modal2, setModal2] = useState(false);
+  const [edit, setEdit] = useState(false);
   const ref = useRef();
   const formik = useFormik({
     initialValues: {
@@ -49,6 +51,12 @@ function PassManager() {
     },
     validationSchema: addSiteSchema,
     onSubmit: (values) => {
+      console.log(values);
+      values.mobile = user.currentUser.mobile;
+      dispatch(addUsersData(values));
+      formik.resetForm();
+    },
+    onSubmit2: (values) => {
       console.log(values);
       values.mobile = user.currentUser.mobile;
       dispatch(addUsersData(values));
@@ -92,7 +100,9 @@ function PassManager() {
             value={formik.values.sector}
             className="addsite-input"
           >
-            <option value="Select" selected>All</option>
+            <option value="Select" selected>
+              All
+            </option>
             <option value="Social Media" selected>
               Social Media
             </option>
@@ -104,7 +114,12 @@ function PassManager() {
         {user.allUsersDataCopy.length > 0 ? (
           user.allUsersDataCopy.map((e) => {
             return (
-              <div className="card">
+              <div
+                onClick={() => {
+                  setModal2(true);
+                }}
+                className="card"
+              >
                 <div className="card-innerDiv1">
                   <img src={fb} />
                   <div>
@@ -267,6 +282,122 @@ function PassManager() {
                 <button type="submit" className="save-btn btn">
                   Save
                 </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      ) : null}
+
+      {/* ------------------------------------------MODAL-VIEW------------------------------------------------ */}
+      {/* ------------------------------------------MODAL-VIEW------------------------------------------------ */}
+      {modal2 ? (
+        <div className="addSite-modal">
+          <form onSubmit2={formik.handleSubmit}>
+            <div className="modal-container">
+              <img
+                onClick={() => {
+                  setModal2(false);
+                  setEdit(false);
+                  formik.resetForm();
+               
+                }}
+                className="cancel-Btn"
+                src={addbtn}
+              ></img>
+              <p className="addSite-text">Site Details</p>
+              {!edit ? (
+                <button
+                  onClick={() => {
+                    setEdit(true);
+                  }}
+                  className="edit-btn btn"
+                >
+                  Edit
+                </button>
+              ) : null}
+
+              <label className="label">URL</label>
+              <input
+                ref={ref}
+                autoComplete="off"
+                name="url"
+                onChange={formik.handleChange}
+                value={formik.values.url}
+                className="addsite-input"
+                disabled={true}
+               
+          
+              />
+
+              <label className="label">Site Name</label>
+              <input
+                ref={ref}
+                autoComplete="off"
+                name="sitename"
+                onChange={formik.handleChange}
+                value={formik.values.sitename}
+                className="addsite-input"
+              />
+
+              <label className="label">Sector/Folder</label>
+              <select
+                autoComplete="off"
+                name="sector"
+                onChange={formik.handleChange}
+                value={formik.values.sector}
+                className="addsite-input"
+              >
+                <option value="Select" selected>
+                  Select
+                </option>
+                <option value="Social Media" selected>
+                  Social Media
+                </option>
+                <option value="Websites">Websites</option>
+              </select>
+
+              <label className="label">User Name</label>
+              <input
+                ref={ref}
+                autoComplete="off"
+                name="username"
+                onChange={formik.handleChange}
+                value={formik.values.username}
+                className="addsite-input"
+              />
+
+              <label className="label">Site Password</label>
+              <input
+                ref={ref}
+                autoComplete="off"
+                name="password"
+                onChange={formik.handleChange}
+                value={formik.values.password}
+                className="addsite-input"
+              />
+
+              <label className="label">Notes</label>
+              <textarea
+                ref={ref}
+                autoComplete="off"
+                name="notes"
+                onChange={formik.handleChange}
+                value={formik.values.notes}
+                className="addsite-input"
+              />
+              {/* {formik.errors.username.length ||
+              formik.errors.url.length ||
+              formik.errors.sector.length ||
+              formik.errors.sitename.length ||
+              formik.errors.password.length < 0 ? (
+                <p className="addsiteForm-error">Please fill all the details</p>
+              ) : null} */}
+              <div className="btns-div">
+                {edit ? (
+                  <button type="submit" className="save-btn btn">
+                    Update
+                  </button>
+                ) : null}
               </div>
             </div>
           </form>

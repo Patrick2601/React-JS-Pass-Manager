@@ -8,7 +8,8 @@ import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addCurrentUser, filterUsersData } from "../../redux/Slice";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const SignInSchema = Yup.object().shape({
   mobile: Yup.string()
     .min(10, "Too Short!")
@@ -36,10 +37,35 @@ function SignIn() {
       ).length;
       console.log(userMobile);
       if (userMobile == 0) {
-        alert("User Not Registered");
+        
+        toast.error("User Not Registered", {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          progress: undefined,
+          theme: "light",
+        });
       } else {
-        dispatch(addCurrentUser({ mobile: values.mobile, mpin: values.mpin }));
-        dispatch(filterUsersData());
+        toast.success("Sign In Successful", {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          progress: undefined,
+          theme: "light",
+        });
+
+        setTimeout(() => {
+          dispatch(
+            addCurrentUser({ mobile: values.mobile, mpin: values.mpin })
+          );
+          dispatch(filterUsersData());
+        }, 1500);
       }
     },
   });
@@ -108,6 +134,7 @@ function SignIn() {
           </NavLink>
         </p>
       </form>
+      <ToastContainer />
     </div>
   );
 }
